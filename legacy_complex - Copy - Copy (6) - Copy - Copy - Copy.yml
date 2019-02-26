@@ -1,0 +1,20 @@
+- name: "show ip interface brief"
+  hosts: all
+  gather_facts: no
+  
+  tasks:
+    - name: debug print variables
+      debug:
+        msg: "group keyword is: {{ group_var_key }}"
+        msg: "extra vars is: {{ testExtraVar }}"
+         
+    # Cisco IOS show cmd
+    - name: cisco ios "show ip interface brief"
+      ios_command:
+        commands: show ip interface brief 
+        wait_for: result[0] contains Interface
+      register: interfaces
+  
+    - name: debug print all interfaces    
+      debug:
+        msg: "{{ interfaces.stdout }}"

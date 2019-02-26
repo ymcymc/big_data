@@ -1,0 +1,13 @@
+[ungrouped]
+192.168.180.101 ansible_connection=local ansible_ssh_user=root ansible_ssh_pass=netbrain1 var="192.168.180.101"
+192.168.180.107 ansible_connection=local 
+
+[ungrouped:vars]
+var="ungrouped var"
+
+[all:vars]
+var="group all"
+
+[group_1]
+192.168.180.103 ansible_connection=local ansible_ssh_user=root ansible_ssh_pass=netbrain1
+192.168.180.104 ansible_connection=local ansible_ssh_user=root ansible_ssh_pass=netbrain1 var="192.168.180.104"

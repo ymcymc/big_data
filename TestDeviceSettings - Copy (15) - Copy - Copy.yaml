@@ -1,0 +1,17 @@
+- name: "show ip interface brief"
+  hosts: all
+  tasks:
+    
+    - name: debug print username1
+      debug:
+        var: username1
+    - name: debug print password1
+      debug:
+        var: password1
+        
+    - name: debug print username2
+      debug:
+        var: username2
+    - name: debug print password2
+      debug:
+        var: password2

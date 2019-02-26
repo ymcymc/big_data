@@ -1,0 +1,15 @@
+- name: "show ip interface brief"
+  hosts: all
+  gather_facts: no
+ 
+  tasks:
+    # Cisco IOS show cmd
+    - name: run show ip interface brief IOS
+      ios_command:
+        commands: show ip interface brief
+        wait_for: result[0] contains Interface
+      register: interfaces
+
+    - name: debug print all interfaces
+      debug:
+        msg: "{{ interfaces.stdout }}"

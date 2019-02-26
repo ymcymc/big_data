@@ -1,0 +1,6 @@
+- name: "pause for a while"
+  hosts: all
+  gather_facts: no
+ 
+  tasks:
+    - pause: seconds=30

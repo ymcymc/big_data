@@ -1,0 +1,10 @@
+---
+- name: "show ip interface brief"
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: Backup configuration
+      ios_command:
+        commands:
+          - show version

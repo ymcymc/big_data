@@ -1,0 +1,42 @@
+- name: "Cisco ACI Add/Delete Tenant"
+  hosts: all
+  gather_facts: no
+  connection: local
+ 
+  tasks:
+    - name: Add a new tenant
+      aci_tenant:
+        hostname: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        tenant: "{{ tenant_name }}"
+        description: add a tenant
+        validate_certs: no
+        state: present
+ 
+    - name: ACI query one tenant
+      aci_tenant:
+        hostname: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        tenant: "{{ tenant_name }}"
+        validate_certs: no
+        state: query
+    - name: Remove a new tenant
+      aci_tenant:
+        hostname: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        tenant: "{{tenant_name}}"
+        description: remove a tenant
+        validate_certs: no
+        state: absent
+ 
+    - name: ACI query one tenant
+      aci_tenant:
+        hostname: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        tenant: "{{ tenant_name }}"
+        validate_certs: no
+        state: query

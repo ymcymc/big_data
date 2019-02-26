@@ -1,0 +1,8 @@
+- name: "test print extra var"
+  hosts: all
+  gather_facts: no
+ 
+  tasks:
+    - name: debug print --extra-vars
+      debug:
+        msg: "extra vars value : {{ testExtraVar }}"

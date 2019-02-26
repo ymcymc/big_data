@@ -1,0 +1,26 @@
+- name: "test all"
+  hosts: all
+  gather_facts: no
+ 
+  tasks:
+    - name: group all
+      debug:
+        msg: "{{ var }}"
+
+- name: "test ungrouped"
+  hosts: ungrouped
+  gather_facts: no
+ 
+  tasks:
+    - name: ungrouped
+      debug:
+        msg: "{{ var }}"
+
+- name: "group_1"
+  hosts: group_1
+  gather_facts: no
+ 
+  tasks:
+    - name: group_1
+      debug:
+        msg: "{{ var }}"                

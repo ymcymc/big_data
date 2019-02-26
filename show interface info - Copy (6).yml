@@ -1,0 +1,9 @@
+- name: "Cisco IOS Show Interface Info"
+  hosts: all
+  gather_facts: no
+ 
+  tasks:
+    - name: show all visible interfaces
+      ios_command:
+        commands: show interface {{ item }}
+      loop: "{{ visible_interfaces|list }}" # need to define host variable visible_interfaces in inventory

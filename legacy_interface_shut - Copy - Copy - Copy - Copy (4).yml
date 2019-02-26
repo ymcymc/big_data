@@ -1,0 +1,15 @@
+# legacy
+# interface
+# shutdown & no shutdown
+  
+- name: "Cisco IOS"
+  hosts: all
+  gather_facts: no
+ 
+  tasks:
+    - name: shutdown interface GigabitEthernet0/3
+      ios_config:
+        before:
+          - interface GigabitEthernet0/3
+        lines:
+          - shutdown

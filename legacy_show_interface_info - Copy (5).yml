@@ -1,0 +1,17 @@
+# legacy
+# all visible interface
+# show interface xxx
+ 
+- name: "Cisco IOS Show Interface Info"
+  hosts: all
+  gather_facts: no
+ 
+  tasks:
+    - name: show all visible interfaces
+      ios_command:
+        commands: show interface {{ item }}
+      with_items: "{{ visible_interfaces|list }}" # need to define host variable visible_interfaces in inventory
+      # note: loop keyword is only available after Ansible 2.5
+    
+# 注意，对应的inventory中需要定义list，保证语法正确
+# 192.168.180.103 visible_interfaces='["GigabitEthernet0/0","GigabitEthernet0/1"]'
